@@ -11,7 +11,7 @@ needle, right where the iron is. Roll it back to retract. Fully parametric OpenS
   the spool. Only the last ~15 mm, from the wheel to the tip, is pushed.
 - **Centred needle.** The wire runs dead straight on the pen's axis through an ISO 594 Luer taper, so any
   blunt dispensing needle fits.
-- **Tunable grip.** The idler rides on a printed flexure arm. Swap arms (0.9–1.8 mm) to set the pinch from ~1 to ~8 N.
+- **Tunable grip.** The idler rides on a printed flexure arm. Swap arms (1.0–2.0 mm) to set the pinch from ~1 to ~7 N.
 
 ## How it works
 
@@ -21,14 +21,14 @@ needle, right where the iron is. Roll it back to retract. Fully parametric OpenS
 
 ## Assembly
 
-The pen-scale test rig goes together in seven steps: **[assembly guide](docs/assembly.md)**. It also lists
-every fit and its designed clearance.
+The pen-scale test rig is a hex body in three flat layers that print without supports; every part drops in
+from above in order. **[Assembly guide](docs/assembly.md)**: eight steps and every fit's clearance.
 
 ![Exploded](renders/rig_step0.png)
 
 ## Status
 
-Early prototype (2026-11). The pen-scale rig is printed and being tested. See [docs/status.md](docs/status.md).
+Early prototype (2026-11). Pen-scale rig v2 is ready to print. See [docs/status.md](docs/status.md).
 
 | | |
 |---|---|

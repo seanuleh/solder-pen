@@ -1,41 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1660" height="620" viewBox="0 0 1660 620">
+<svg xmlns="http://www.w3.org/2000/svg" width="1660" height="660" viewBox="0 0 1660 660">
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker></defs>
-<rect width="1660" height="620" fill="white"/>
+<rect width="1660" height="660" fill="white"/>
 <text x="40" y="44" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#222">How it grips: the idler is preloaded into the wire's path</text>
 <text x="40" y="72" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#777">With no wire, the idler sits 0.6 mm past the wire line. Loading the wire bends the arm back ~0.6 mm, and the bent arm is the spring.</text>
-<line x1="120" y1="338" x2="900" y2="338" stroke="#5b6570" stroke-width="22.6" stroke-linecap="round"/>
-<text x="127.79999999999993" y="366.6" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777">wire ø0.87 (0.8 nominal)</text>
-<polygon points="679.0,433.8 656.4,418.2 670.0,394.3 642.9,390.0 644.7,362.7 618.5,370.6 608.2,345.1 588.0,363.6 567.8,345.1 557.5,370.6 531.3,362.7 533.1,390.0 506.0,394.3 519.6,418.2 497.0,433.8 519.6,449.4 506.0,473.3 533.1,477.6 531.3,505.0 557.5,497.1 567.8,522.5 588.0,504.0 608.2,522.5 618.5,497.1 644.7,505.0 642.9,477.6 670.0,473.3 656.4,449.4" fill="#3b82c4" stroke="#222"/>
-<circle cx="588" cy="433.81" r="39.0" fill="white" stroke="#222"/>
-<rect x="198" y="130.0" width="104" height="78.0" fill="#6bbf59" stroke="#222"/>
-<text x="198" y="230.0" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777">anchor, slotted into the body (fixed)</text>
-<polygon points="302.0,153.4 316.6,153.4 331.2,153.4 345.9,153.4 360.5,153.4 375.1,153.4 389.8,153.4 404.4,153.4 419.0,153.4 433.6,153.4 448.2,153.4 462.9,153.4 477.5,153.4 492.1,153.4 506.8,153.4 521.4,153.4 536.0,153.4 550.6,153.4 565.2,153.4 579.9,153.4 594.5,153.4 609.1,153.4 623.8,153.4 638.4,153.4 653.0,153.4 653.0,192.4 638.4,192.4 623.8,192.4 609.1,192.4 594.5,192.4 579.9,192.4 565.2,192.4 550.6,192.4 536.0,192.4 521.4,192.4 506.8,192.4 492.1,192.4 477.5,192.4 462.9,192.4 448.2,192.4 433.6,192.4 419.0,192.4 404.4,192.4 389.8,192.4 375.1,192.4 360.5,192.4 345.9,192.4 331.2,192.4 316.6,192.4 302.0,192.4" fill="none" stroke="#777" stroke-width="1.5" stroke-dasharray="6 4"/>
-<polygon points="302.0,153.4 316.6,153.4 331.2,153.2 345.9,153.0 360.5,152.8 375.1,152.5 389.8,152.1 404.4,151.6 419.0,151.1 433.6,150.5 448.2,149.9 462.9,149.2 477.5,148.5 492.1,147.8 506.8,147.0 521.4,146.2 536.0,145.3 550.6,144.4 565.2,143.5 579.9,142.6 594.5,141.7 609.1,140.7 623.8,139.7 638.4,138.8 653.0,137.8 653.0,176.8 638.4,177.8 623.8,178.7 609.1,179.7 594.5,180.7 579.9,181.6 565.2,182.5 550.6,183.4 536.0,184.3 521.4,185.2 506.8,186.0 492.1,186.8 477.5,187.5 462.9,188.2 448.2,188.9 433.6,189.5 419.0,190.1 404.4,190.6 389.8,191.1 375.1,191.5 360.5,191.8 345.9,192.0 331.2,192.2 316.6,192.4 302.0,192.4" fill="#6bbf59" stroke="#222"/>
-<polygon points="653.0,277.3 630.0,263.6 640.6,239.1 614.0,241.5 608.1,215.5 588.0,233.1 567.9,215.5 562.0,241.5 535.4,239.1 546.0,263.6 523.0,277.3 546.0,290.9 535.4,315.5 562.0,313.0 567.9,339.1 588.0,321.5 608.1,339.1 614.0,313.0 640.6,315.5 630.0,290.9" fill="none" stroke="#777" stroke-width="1.5" stroke-dasharray="6 4"/>
-<rect x="523.0" y="176.8" width="130" height="69.28999999999999" fill="#6bbf59" stroke="#222"/>
-<polygon points="653.0,261.7 630.0,248.0 640.6,223.5 614.0,225.9 608.1,199.9 588.0,217.5 567.9,199.9 562.0,225.9 535.4,223.5 546.0,248.0 523.0,261.7 546.0,275.3 535.4,299.9 562.0,297.4 567.9,323.5 588.0,305.9 608.1,323.5 614.0,297.4 640.6,299.9 630.0,275.3" fill="#cccccc" stroke="#222"/>
-<circle cx="588" cy="261.69" r="32.5" fill="#6bbf59" stroke="#222"/>
-<line x1="302" y1="111.80000000000001" x2="588" y2="111.80000000000001" stroke="#222" marker-start="url(#a)" marker-end="url(#a)"/>
-<text x="445.0" y="103.80000000000001" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222" text-anchor="middle">free length 11 mm, 6.2 mm tall</text>
-<line x1="705.0" y1="192.4" x2="705.0" y2="176.8" stroke="#c0392b" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>
-<text x="715.0" y="189.60000000000002" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#c0392b">0.6 mm bend = the preload</text>
-<line x1="588" y1="154.08999999999997" x2="588" y2="196.08999999999997" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
-<text x="598" y="164.08999999999997" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#c0392b">pinch force</text>
-<text x="520.4" y="558.61" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222">drive wheel: its teeth bite 0.25 mm into the wire</text>
-<text x="1000" y="436" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222">Swap arms to tune the grip</text>
-<text x="1000" y="470" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">arm</text>
-<text x="1120" y="470" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">notches</text>
-<text x="1240" y="470" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">pinch</text>
-<text x="1000" y="494" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >0.9 mm</text>
-<text x="1120" y="494" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1</text>
-<text x="1240" y="494" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~1 N</text>
-<text x="1000" y="518" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.2 mm</text>
-<text x="1120" y="518" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >2</text>
-<text x="1240" y="518" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~2.5 N</text>
-<text x="1000" y="542" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.5 mm</text>
-<text x="1120" y="542" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >3</text>
-<text x="1240" y="542" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~5 N</text>
-<text x="1000" y="566" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.8 mm</text>
-<text x="1120" y="566" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >4</text>
-<text x="1240" y="566" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~8 N</text>
+<line x1="120" y1="380" x2="900" y2="380" stroke="#5b6570" stroke-width="22.6" stroke-linecap="round"/>
+<text x="127.79999999999993" y="408.6" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777">wire ø0.87 (0.8 nominal)</text>
+<polygon points="679.0,475.8 656.4,460.2 670.0,436.3 642.9,432.0 644.7,404.7 618.5,412.6 608.2,387.1 588.0,405.6 567.8,387.1 557.5,412.6 531.3,404.7 533.1,432.0 506.0,436.3 519.6,460.2 497.0,475.8 519.6,491.4 506.0,515.3 533.1,519.6 531.3,547.0 557.5,539.1 567.8,564.5 588.0,546.0 608.2,564.5 618.5,539.1 644.7,547.0 642.9,519.6 670.0,515.3 656.4,491.4" fill="#3b82c4" stroke="#222"/>
+<circle cx="588" cy="475.81" r="39.0" fill="white" stroke="#222"/>
+<rect x="198" y="152.89000000000001" width="104" height="85.8" fill="#6bbf59" stroke="#222"/>
+<text x="198" y="260.69" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777">anchor, slotted into the body (fixed)</text>
+<polygon points="302.0,171.1 316.6,171.1 331.2,171.1 345.9,171.1 360.5,171.1 375.1,171.1 389.8,171.1 404.4,171.1 419.0,171.1 433.6,171.1 448.2,171.1 462.9,171.1 477.5,171.1 492.1,171.1 506.8,171.1 521.4,171.1 536.0,171.1 550.6,171.1 565.2,171.1 579.9,171.1 594.5,171.1 609.1,171.1 623.8,171.1 638.4,171.1 653.0,171.1 653.0,212.7 638.4,212.7 623.8,212.7 609.1,212.7 594.5,212.7 579.9,212.7 565.2,212.7 550.6,212.7 536.0,212.7 521.4,212.7 506.8,212.7 492.1,212.7 477.5,212.7 462.9,212.7 448.2,212.7 433.6,212.7 419.0,212.7 404.4,212.7 389.8,212.7 375.1,212.7 360.5,212.7 345.9,212.7 331.2,212.7 316.6,212.7 302.0,212.7" fill="none" stroke="#777" stroke-width="1.5" stroke-dasharray="6 4"/>
+<polygon points="302.0,171.1 316.6,171.0 331.2,170.9 345.9,170.7 360.5,170.5 375.1,170.1 389.8,169.7 404.4,169.3 419.0,168.8 433.6,168.2 448.2,167.6 462.9,166.9 477.5,166.2 492.1,165.5 506.8,164.7 521.4,163.9 536.0,163.0 550.6,162.1 565.2,161.2 579.9,160.3 594.5,159.4 609.1,158.4 623.8,157.4 638.4,156.5 653.0,155.5 653.0,197.1 638.4,198.1 623.8,199.0 609.1,200.0 594.5,201.0 579.9,201.9 565.2,202.8 550.6,203.7 536.0,204.6 521.4,205.5 506.8,206.3 492.1,207.1 477.5,207.8 462.9,208.5 448.2,209.2 433.6,209.8 419.0,210.4 404.4,210.9 389.8,211.3 375.1,211.7 360.5,212.1 345.9,212.3 331.2,212.5 316.6,212.6 302.0,212.7" fill="#6bbf59" stroke="#222"/>
+<polygon points="666.0,306.3 650.8,289.5 655.5,267.3 634.0,260.3 627.0,238.7 604.8,243.5 588.0,228.3 571.2,243.5 549.0,238.7 542.0,260.3 520.5,267.3 525.2,289.5 510.0,306.3 525.2,323.1 520.5,345.3 542.0,352.3 549.0,373.8 571.2,369.1 588.0,384.3 604.8,369.1 627.0,373.8 634.0,352.3 655.5,345.3 650.8,323.1" fill="none" stroke="#777" stroke-width="1.5" stroke-dasharray="6 4"/>
+<rect x="523.0" y="197.09000000000003" width="130" height="77.99999999999999" fill="#6bbf59" stroke="#222"/>
+<polygon points="666.0,290.7 650.8,273.9 655.5,251.7 634.0,244.7 627.0,223.1 604.8,227.9 588.0,212.7 571.2,227.9 549.0,223.1 542.0,244.7 520.5,251.7 525.2,273.9 510.0,290.7 525.2,307.5 520.5,329.7 542.0,336.7 549.0,358.2 571.2,353.5 588.0,368.7 604.8,353.5 627.0,358.2 634.0,336.7 655.5,329.7 650.8,307.5" fill="#cccccc" stroke="#222"/>
+<circle cx="588" cy="290.69" r="32.5" fill="#6bbf59" stroke="#222"/>
+<line x1="302" y1="129.49" x2="588" y2="129.49" stroke="#222" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="445.0" y="121.49000000000001" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222" text-anchor="middle">free length 11 mm, 4 mm tall</text>
+<line x1="705.0" y1="212.69" x2="705.0" y2="197.09000000000003" stroke="#c0392b" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>
+<text x="715.0" y="209.89000000000001" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#c0392b">0.6 mm bend = the preload</text>
+<line x1="588" y1="183.08999999999997" x2="588" y2="225.08999999999997" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+<text x="578" y="193.08999999999997" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#c0392b" text-anchor="end">pinch force</text>
+<text x="520.4" y="600.61" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222">drive wheel: its teeth bite 0.25 mm into the wire</text>
+<text x="1000" y="466" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222">Swap arms to tune the grip</text>
+<text x="1000" y="500" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">arm</text>
+<text x="1120" y="500" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">notches</text>
+<text x="1240" y="500" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#777" font-weight="bold">pinch</text>
+<text x="1000" y="524" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.0 mm</text>
+<text x="1120" y="524" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1</text>
+<text x="1240" y="524" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~1 N</text>
+<text x="1000" y="548" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.3 mm</text>
+<text x="1120" y="548" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >2</text>
+<text x="1240" y="548" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~2 N</text>
+<text x="1000" y="572" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >1.6 mm</text>
+<text x="1120" y="572" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >3</text>
+<text x="1240" y="572" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~3.5 N</text>
+<text x="1000" y="596" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >2.0 mm</text>
+<text x="1120" y="596" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >4</text>
+<text x="1240" y="596" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222" >~7 N</text>
 </svg>

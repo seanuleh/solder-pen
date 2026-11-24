@@ -8,9 +8,24 @@ aren't reopened. Moved here from the solder-desk repo on 2026-11-24, when the pe
 - Never print around or encapsulate a spring; flexures are printed instead.
 - Prefer what the user already owns over buying hardware (they skipped an MK8 steel drive gear).
 - Measure the real item (wire, needle) before sizing a fit.
+- Every part must have a straight assembly path and print without supports or ceilings (both checked).
+- Don't spend prints on fit-test coupons; size fits for FDM and adjust after the real print.
 
 ## Current decisions
 
+- **Rig v2: hex sandwich of three flat layers, FDM fits, checked assembly paths** (2026-11-24). The user
+  printed v1 and found three faults: the cover's thumbwheel pocket printed as spaghetti (a ø19 ceiling); it
+  could not be assembled (the cover had to pass through the thumbwheel, which my step renders glossed over);
+  and the pins and slots didn't fit or bound (0.25 on pins, 0.12 on slots, no print allowance). The user asked
+  for a 3-part shell that sandwiches together. A sandwich only prints clean if each layer has a flat face and
+  every pocket opens toward the next layer, which a round body can't give, so the body went **hexagonal** (the
+  user's pick over flat-sided or keeping round with supports). Held by **pegs + hex rings**, no hardware (user's
+  pick). Fits are now 0.5 on spinning pins, 0.3 axial, 0.2–0.25 on slots/grooves, +0.4 on pegs, each one
+  parameter. **Printed pins kept** (the user prefers all-printed; M2 screws from another project are an
+  option if a pin fails): the idler grew to ø6 so a ø3 pin with 0.5 clearance leaves a real wall. New checks
+  `no_ceilings` and `assembly_paths_clear`, both proven to fail on v1. **No fit-test coupon**: the user doesn't
+  want print cycles spent on coupons; fix by parameter after the real print. Test prints use the **grey Bambu
+  PETG HF (AMS slot 1)**; the user rejected the SUNLU PETG as poor.
 - **Own repo** (2026-11-24). The pen started inside the solder-desk project but has nothing to do with the
   board; it moved to this repo with its renders, STLs and history notes.
 - **Assembly guide + fits table** (2026-11-24). The user, holding the printed rig, found it unclear how the parts

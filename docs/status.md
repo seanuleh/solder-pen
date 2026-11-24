@@ -2,15 +2,15 @@
 
 ## Now (2026-11-24)
 
-- **Pen-scale rig printed** (white SUNLU PETG, 0.16 mm Optimal). The plate layout was wrong: the two rings
-  fused onto the nose and three of the four arms fused together. Fixed in the model the same day (check
-  `plate_parts_apart`). **Reprint of nose + 2 rings + 4 arms is sliced and on hold** (~24 min, 2.6 g).
-- The user, assembling it, found **the tolerances seem off** and how the parts go together unclear →
-  [assembly.md](assembly.md) (steps + fits table). **Next:** find which fits are wrong (the fits table lists the
-  likely ones: pin bores, arm anchor slot), adjust, reprint those parts.
-- Then test on the rig: grip with ø7/ø5 rollers, coil drag, thumbwheel feel, whether the pinch holds after a few
-  days loaded.
-- Drive test rig **v2** is designed but not printed (skipped in favour of the pen-scale rig).
+- **Rig v2 is ready to print** (`stl/solder_pen_rig/solder_pen_rig.3mf`, all 14 parts): hex sandwich, FDM fits,
+  every check passing. To print in **grey Bambu PETG HF, AMS slot 1**.
+- **v1** (round, two halves, white SUNLU PETG) is retired: it printed with spaghetti in the cover, could not be
+  assembled, and its pins/slots didn't fit or bound. The held reprint of its fused parts (Bambuddy gcode id 22)
+  is obsolete.
+- **Next:** print v2, assemble it per [assembly.md](assembly.md), and report any fit that's off (each is one
+  parameter). Then test: grip with ø7/ø6 rollers, coil drag, thumbwheel feel, whether the pinch holds after a
+  few days loaded.
+- Drive test rig v2 (the flat sled) is designed but not printed, and still has v1-style tight fits.
 
 ## History
 

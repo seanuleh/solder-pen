@@ -6,15 +6,18 @@ D = os.path.dirname(os.path.abspath(__file__))
 
 # --- numbers copied from parts/solder_pen_rig.scad (keep in sync) ---
 wire, bite, idl_bite = 0.87, 0.25, 0.6
-drv_d, idl_d, thumb_d, tooth = 7, 5, 18, 0.8
+drv_d, idl_d, thumb_d, tooth = 7, 6, 18, 0.8
+idl_tooth, idl_n = 0.5, 12
 x_n = 56
 drv_c = (x_n, -(wire/2 - bite) - drv_d/2)
 idl_c = (x_n, (wire/2 - idl_bite) + idl_d/2)
-fl_x0, fl_t, fl_r, core_d, core_x1, lip_d, lip_x1 = 0.85, 2.3, 7, 10, 30.5, 11.6, 33.25
+fl_x0, fl_t, fl_r, core_d, core_x1, lip_d, lip_x1 = 1.5, 2.3, 7, 10, 30.5, 11.6, 33.25
 ch_r, ch_x1, eye_x = 7.5, 34, 39
-anc_x0, anc_x1, anc_y0, anc_y1, arm_y0, arm_t = 41, 45, 5.0, 8.0, 5.6, 1.5
+arm_t = 1.6
+arm_y0 = idl_c[1] + idl_d/2 + 0.6
+anc_x0, anc_x1, anc_y0, anc_y1 = 41, 45, arm_y0 - 1.0, arm_y0 + 2.0 + 0.3
 ns_x = x_n + thumb_d/2 + 1; ns_d, ns_t, luer_l = 13, 2.5, 8.5
-x_front = ns_x + ns_t + 0.15 + 1.0
+x_front = ns_x + ns_t + 0.5 + 1.5
 
 INK, MUTED, WIRE = "#222", "#777", "#5b6570"
 BOLD = 'font-weight="bold"'
@@ -28,10 +31,11 @@ def svg(w, h, body):
             f'<path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker></defs>\n'
             f'<rect width="{w}" height="{h}" fill="white"/>\n{body}</svg>\n')
 
-def teeth(cx, cy, d, n, P):
+def teeth(cx, cy, d, n, P, dp=None):
+    dp = tooth if dp is None else dp
     pts = []
     for i in range(2*n):
-        a = math.pi * i / n; r = d/2 if i % 2 == 0 else d/2 - tooth
+        a = math.pi * i / n; r = d/2 if i % 2 == 0 else d/2 - dp
         pts.append(P(cx + r*math.cos(a), cy + r*math.sin(a)))
     return " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
 
@@ -48,9 +52,10 @@ def how():
     S, OX, OY = 15, 70, 330
     P = lambda x, y: (OX + x*S, OY - y*S)
     b = ""
-    b += f'<text x="40" y="44" {FONT} font-size="26" font-weight="bold" fill="{INK}">How it works: the wire path (top view, cover off)</text>\n'
+    b += f'<text x="40" y="44" {FONT} font-size="26" font-weight="bold" fill="{INK}">How it works: the wire path (top view, lid off)</text>\n'
     b += f'<text x="40" y="72" {FONT} font-size="16" fill="{MUTED}">Roll the thumbwheel: the drive wheel pulls wire off the fixed spool and pushes it out of the needle. Roll back to retract.</text>\n'
-    x, y = P(0, 10); w = x_front*S; h = 20*S
+    HW = 20 / math.sqrt(3)                      # hex body, widest at the wire line
+    x, y = P(0, HW); w = x_front*S; h = 2*HW*S
     b += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="#fbe9e7" stroke="#d0393b" stroke-width="2"/>\n'
     # chamber + funnel
     cx0, cy0 = P(fl_x0 + fl_t, ch_r); cx1, cy1 = P(ch_x1, -ch_r); ex, ey = P(eye_x, 1.5); ex2, ey2 = P(eye_x, -1.5)
@@ -74,7 +79,7 @@ def how():
     ax, ay = P(anc_x0, anc_y1); b += f'<rect x="{ax}" y="{ay}" width="{(anc_x1-anc_x0)*S}" height="{(anc_y1-anc_y0)*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     fx, fy = P(anc_x1, arm_y0 + arm_t); b += f'<rect x="{fx}" y="{fy}" width="{(x_n+2.5-anc_x1)*S}" height="{arm_t*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     bx, by = P(x_n - 2.5, arm_y0); b += f'<rect x="{bx}" y="{by}" width="{5*S}" height="{(arm_y0-idl_c[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
-    b += f'<polygon points="{teeth(*idl_c, idl_d, 10, P)}" fill="#cccccc" stroke="{INK}"/>\n'
+    b += f'<polygon points="{teeth(*idl_c, idl_d, idl_n, P, idl_tooth)}" fill="#cccccc" stroke="{INK}"/>\n'
     ix, iy = P(*idl_c); b += f'<circle cx="{ix}" cy="{iy}" r="{1.25*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     # nose
     nx, ny = P(ns_x, ns_d/2); b += f'<rect x="{nx}" y="{ny}" width="{ns_t*S}" height="{ns_d*S}" fill="#e879b0" stroke="{INK}"/>\n'
@@ -96,13 +101,13 @@ def how():
     b += label(*P(lip_x1 - 0.5, -lip_d/2 - 0.3), *P(24, -15.5), "2  Peels over the lip", sub="front turn first, so nothing crosses")
     b += label(*P(eye_x, 0), *P(38, 15.5), "3  Funnel + eyelet", sub="centres the wire on the axis")
     b += label(*P(x_n - 2, drv_c[1] - 2), *P(48, -17.5), "4  Drive wheel + thumbwheel", sub="ø7, 14 teeth; ø18 thumbwheel pokes out the side")
-    b += label(*P(x_n + 2.2, idl_c[1]), *P(62, 15.5), "5  Idler on a flexure arm", sub="arm thickness sets the pinch (1-8 N)")
+    b += label(*P(x_n + 2.2, idl_c[1]), *P(62, 15.5), "5  Idler on a flexure arm", sub="arm thickness sets the pinch (~1-7 N)")
     b += label(*P(ns_x + ns_t + 5, 1.3), *P(84, -9.5), "6  Luer nose + needle", sub="ISO 594 taper; any blunt Luer needle")
     return svg(1660, 640, b)
 
 # ---------------- 2. the pinch: flexure arm as a cantilever ----------------
 def pinch():
-    S, OX, OY = 26, 120, 338
+    S, OX, OY = 26, 120, 380
     P = lambda x, y: (OX + (x - 38)*S, OY - (y - 0)*S)
     b = ""
     b += f'<text x="40" y="44" {FONT} font-size="26" font-weight="bold" fill="{INK}">How it grips: the idler is preloaded into the wire\'s path</text>\n'
@@ -128,28 +133,28 @@ def pinch():
     b += arm_path(0, f'fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 4"')
     b += arm_path(0.6, f'fill="#6bbf59" stroke="{INK}"')
     ic = (idl_c[0], idl_c[1] + 0.6)
-    b += f'<polygon points="{teeth(*idl_c, idl_d, 10, P)}" fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 4"/>\n'
+    b += f'<polygon points="{teeth(*idl_c, idl_d, idl_n, P, idl_tooth)}" fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 4"/>\n'
     b += f'<rect x="{P(x_n-2.5,0)[0]}" y="{P(0,arm_y0+0.6)[1]}" width="{5*S}" height="{(arm_y0-ic[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
-    b += f'<polygon points="{teeth(*ic, idl_d, 10, P)}" fill="#cccccc" stroke="{INK}"/>\n'
+    b += f'<polygon points="{teeth(*ic, idl_d, idl_n, P, idl_tooth)}" fill="#cccccc" stroke="{INK}"/>\n'
     cx, cy = P(*ic); b += f'<circle cx="{cx}" cy="{cy}" r="{1.25*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     # dimensions
     yL = P(0, arm_y0 + arm_t + 1.6)[1]
     b += f'<line x1="{P(anc_x1,0)[0]}" y1="{yL}" x2="{P(x_n,0)[0]}" y2="{yL}" stroke="{INK}" marker-start="url(#a)" marker-end="url(#a)"/>\n'
-    b += f'<text x="{(P(anc_x1,0)[0]+P(x_n,0)[0])/2}" y="{yL - 8}" {FONT} font-size="16" fill="{INK}" text-anchor="middle">free length 11 mm, 6.2 mm tall</text>\n'
+    b += f'<text x="{(P(anc_x1,0)[0]+P(x_n,0)[0])/2}" y="{yL - 8}" {FONT} font-size="16" fill="{INK}" text-anchor="middle">free length 11 mm, 4 mm tall</text>\n'
     xr = P(x_n + 4.5, 0)[0]
     b += f'<line x1="{xr}" y1="{P(0,arm_y0)[1]}" x2="{xr}" y2="{P(0,arm_y0+0.6)[1]}" stroke="#c0392b" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>\n'
     b += f'<text x="{xr + 10}" y="{P(0,arm_y0+0.3)[1] + 5}" {FONT} font-size="16" fill="#c0392b">0.6 mm bend = the preload</text>\n'
     b += f'<line x1="{cx}" y1="{cy - 2.6*S - 40}" x2="{cx}" y2="{cy - 2.6*S + 2}" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>\n'
-    b += f'<text x="{cx + 10}" y="{cy - 2.6*S - 30}" {FONT} font-size="16" fill="#c0392b">pinch force</text>\n'
+    b += f'<text x="{cx - 10}" y="{cy - 2.6*S - 30}" {FONT} font-size="16" fill="#c0392b" text-anchor="end">pinch force</text>\n'
     b += f'<text x="{dx - 2.6*S}" y="{dy + 4.8*S}" {FONT} font-size="16" fill="{INK}">drive wheel: its teeth bite 0.25 mm into the wire</text>\n'
     # table
-    tx, ty = 1000, 470
-    rows = [("arm", "notches", "pinch"), ("0.9 mm", "1", "~1 N"), ("1.2 mm", "2", "~2.5 N"), ("1.5 mm", "3", "~5 N"), ("1.8 mm", "4", "~8 N")]
+    tx, ty = 1000, 500
+    rows = [("arm", "notches", "pinch"), ("1.0 mm", "1", "~1 N"), ("1.3 mm", "2", "~2 N"), ("1.6 mm", "3", "~3.5 N"), ("2.0 mm", "4", "~7 N")]
     b += f'<text x="{tx}" y="{ty - 34}" {FONT} font-size="17" font-weight="bold" fill="{INK}">Swap arms to tune the grip</text>\n'
     for i, r in enumerate(rows):
         for j, c in enumerate(r):
             b += f'<text x="{tx + j*120}" y="{ty + i*24}" {FONT} font-size="15" fill="{INK if i else MUTED}" {BOLD if i == 0 else ""}>{c}</text>\n'
-    return svg(1660, 620, b)
+    return svg(1660, 660, b)
 
 open(os.path.join(D, "how_it_works.svg"), "w").write(how())
 open(os.path.join(D, "pinch.svg"), "w").write(pinch())

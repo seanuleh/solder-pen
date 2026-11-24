@@ -1,5 +1,6 @@
 #!/bin/sh
-# Geometry checks. Each test counts the separate bodies an export produces:
+# Geometry checks.
+# Body counts (each export must have the expected number of separate bodies):
 #   one_piece          a printed part must be ONE connected solid (a cut that slices it leaves a floating piece)
 #   plate_parts_apart  a print plate must have exactly its part count of bodies (parts laid out touching
 #                      or overlapping fuse in the slicer; the 2026-11-24 rig plate fused its rings onto the nose)
@@ -35,18 +36,35 @@ solder_pen_drive_test.scad|-D 'part="wheel"'|1|one_piece drive_test wheel
 solder_pen_drive_test.scad|-D 'part="idler"'|1|one_piece drive_test idler
 solder_pen_drive_test.scad|-D 'part="idler"' -D toothed=false|1|one_piece drive_test idler_smooth
 solder_pen_drive_test.scad|-D 'part="nose"'|1|one_piece drive_test nose
-solder_pen_rig.scad|-D 'part="bottom"'|1|one_piece rig bottom
-solder_pen_rig.scad|-D 'part="cover"'|1|one_piece rig cover
+solder_pen_rig.scad|-D 'part="base"'|1|one_piece rig base
+solder_pen_rig.scad|-D 'part="mid"'|1|one_piece rig mid
+solder_pen_rig.scad|-D 'part="lid"'|1|one_piece rig lid
 solder_pen_rig.scad|-D 'part="spool"'|1|one_piece rig spool
 solder_pen_rig.scad|-D 'part="wheel"'|1|one_piece rig wheel
 solder_pen_rig.scad|-D 'part="idler"'|1|one_piece rig idler
 solder_pen_rig.scad|-D 'part="idler_smooth"'|1|one_piece rig idler_smooth
 solder_pen_rig.scad|-D 'part="nose"'|1|one_piece rig nose
 solder_pen_rig.scad|-D 'part="ring"'|1|one_piece rig ring
-solder_pen_rig.scad|-D 'part="arm"' -D arm_t=0.9|1|one_piece rig arm0.9
-solder_pen_rig.scad|-D 'part="arm"' -D arm_t=1.8|1|one_piece rig arm1.8
+solder_pen_rig.scad|-D 'part="arm"' -D arm_t=1.0|1|one_piece rig arm1.0
+solder_pen_rig.scad|-D 'part="arm"' -D arm_t=2.0|1|one_piece rig arm2.0
 solder_pen_drive_test.scad|-D 'part="plate"'|5|plate_parts_apart drive_test (5 parts)
-solder_pen_rig.scad|-D 'part="plate"'|13|plate_parts_apart rig (13 parts)
+solder_pen_rig.scad|-D 'part="plate"'|14|plate_parts_apart rig (14 parts)
 LIST
+
+# no_ceilings: every rig part, as printed, has no unsupported ceiling (checks/printable.py; v1's cover failed)
+for p in base mid lid spool wheel idler idler_smooth nose ring arm:1.0 arm:2.0; do
+  n=${p%%:*}; t=${p#*:}; [ "$t" = "$p" ] && t=""
+  openscad -q -o "$tmp/c.stl" -D "part=\"$n\"" ${t:+-D arm_t=$t} parts/solder_pen_rig.scad 2>/dev/null
+  python3 checks/printable.py "$tmp/c.stl" "rig $n$t" || fail=1
+done
+
+# assembly_paths_clear: each rig part reaches its place along its path (drop in from above, rings slide on
+# from the ends) without passing through a part already there (checks/assembly_paths.py; v1's cover failed)
+mkdir -p "$tmp/at"
+for w in base mid lid arm idler wheel spool nose ring_back ring_front; do
+  openscad -q -o "$tmp/at/$w.stl" -D 'part="at"' -D "which=\"$w\"" parts/solder_pen_rig.scad 2>/dev/null
+done
+python3 checks/assembly_paths.py "$tmp/at" || fail=1
+
 rm -r "$tmp"
 exit $fail

@@ -19,8 +19,8 @@ go solder_pen_rig --imgsize=1800,900 --camera=40,0,0,60,0,330,140 -D 'part="asse
 go solder_pen_rig_open --imgsize=1800,900 --camera=36,0,0,55,0,25,135 -D 'part="open"' parts/solder_pen_rig.scad
 go solder_pen_rig_nip --imgsize=1600,900 --projection=o --camera=50,0,0,0,0,0,60 -D 'part="nip"' parts/solder_pen_rig.scad
 
-# Assembly guide steps (docs/assembly.md): 0 = exploded, 1-7 = one part going in at a time; trimmed to the part
-for s in 0 1 2 3 4 5 6 7; do
+# Assembly guide steps (docs/assembly.md): 0 = exploded, 1-8 = one part going in at a time; trimmed to the part
+for s in 0 1 2 3 4 5 6 7 8; do
   go rig_step$s --imgsize=3200,1800 --camera=36,0,10,55,0,25,150 --viewall --autocenter -D 'part="step"' -D step=$s parts/solder_pen_rig.scad
   if [ -z "$ARGS" ] || echo " $ARGS " | grep -q " rig_step$s "; then python3 renders/trim.py renders/rig_step$s.png >/dev/null; fi
 done
