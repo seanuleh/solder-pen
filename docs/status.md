@@ -3,12 +3,12 @@
 ## Now (2026-11-24)
 
 - **Rig v2 is ready to print** (`stl/solder_pen_rig/solder_pen_rig.3mf`, all 14 parts): hex sandwich, FDM fits,
-  every check passing. To print in **grey Bambu PETG HF, AMS slot 1**.
+  1.5 mm-preload spring with a crush-rib anchor, every check passing. To print in **grey Bambu PETG HF, AMS slot 1**.
 - **v1** (round, two halves, white SUNLU PETG) is retired: it printed with spaghetti in the cover, could not be
   assembled, and its pins/slots didn't fit or bound. The held reprint of its fused parts (Bambuddy gcode id 22)
   is obsolete.
 - **Next:** print v2, assemble it per [assembly.md](assembly.md), and report any fit that's off (each is one
-  parameter). Then test: grip with ø7/ø6 rollers, coil drag, thumbwheel feel, whether the pinch holds after a
+  parameter). Then test: does the idler push hard enough (try arms 1.3 then 1.6), grip with ø7/ø6 rollers, coil drag, thumbwheel feel, whether the pinch holds after a
   few days loaded.
 - Drive test rig v2 (the flat sled) is designed but not printed, and still has v1-style tight fits.
 

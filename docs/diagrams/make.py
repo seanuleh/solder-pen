@@ -5,17 +5,17 @@ import math, os
 D = os.path.dirname(os.path.abspath(__file__))
 
 # --- numbers copied from parts/solder_pen_rig.scad (keep in sync) ---
-wire, bite, idl_bite = 0.87, 0.25, 0.6
+wire, bite, PRE = 0.87, 0.25, 1.5          # PRE: the wire bends the arm this far
 drv_d, idl_d, thumb_d, tooth = 7, 6, 18, 0.8
 idl_tooth, idl_n = 0.5, 12
 x_n = 56
 drv_c = (x_n, -(wire/2 - bite) - drv_d/2)
-idl_c = (x_n, (wire/2 - idl_bite) + idl_d/2)
+idl_c = (x_n, wire/2 - 0.1 + idl_d/2 - PRE)   # idler as printed (arm straight)
 fl_x0, fl_t, fl_r, core_d, core_x1, lip_d, lip_x1 = 1.5, 2.3, 7, 10, 30.5, 11.6, 33.25
 ch_r, ch_x1, eye_x = 7.5, 34, 39
-arm_t = 1.6
+arm_t = 1.3
 arm_y0 = idl_c[1] + idl_d/2 + 0.6
-anc_x0, anc_x1, anc_y0, anc_y1 = 41, 45, arm_y0 - 1.0, arm_y0 + 2.0 + 0.3
+anc_x0, anc_x1, anc_y0, anc_y1 = 39, 43, arm_y0 - 1.0, arm_y0 + 1.6 + 0.3
 ns_x = x_n + thumb_d/2 + 1; ns_d, ns_t, luer_l = 13, 2.5, 8.5
 x_front = ns_x + ns_t + 0.5 + 1.5
 
@@ -49,6 +49,7 @@ def label(x, y, tx, ty, text, anchor="start", sub=None):
 
 # ---------------- 1. how it works: top view of the rig, wire path ----------------
 def how():
+    idl_w = (idl_c[0], idl_c[1] + PRE); aw = arm_y0 + PRE    # working position: wire in, arm bent
     S, OX, OY = 15, 70, 330
     P = lambda x, y: (OX + x*S, OY - y*S)
     b = ""
@@ -77,10 +78,10 @@ def how():
     b += f'<circle cx="{tx}" cy="{ty}" r="{1.5*S}" fill="white" stroke="{INK}"/>\n'
     # arm: anchor + flexure + bracket
     ax, ay = P(anc_x0, anc_y1); b += f'<rect x="{ax}" y="{ay}" width="{(anc_x1-anc_x0)*S}" height="{(anc_y1-anc_y0)*S}" fill="#6bbf59" stroke="{INK}"/>\n'
-    fx, fy = P(anc_x1, arm_y0 + arm_t); b += f'<rect x="{fx}" y="{fy}" width="{(x_n+2.5-anc_x1)*S}" height="{arm_t*S}" fill="#6bbf59" stroke="{INK}"/>\n'
-    bx, by = P(x_n - 2.5, arm_y0); b += f'<rect x="{bx}" y="{by}" width="{5*S}" height="{(arm_y0-idl_c[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
-    b += f'<polygon points="{teeth(*idl_c, idl_d, idl_n, P, idl_tooth)}" fill="#cccccc" stroke="{INK}"/>\n'
-    ix, iy = P(*idl_c); b += f'<circle cx="{ix}" cy="{iy}" r="{1.25*S}" fill="#6bbf59" stroke="{INK}"/>\n'
+    fx, fy = P(anc_x1, aw + arm_t); b += f'<rect x="{fx}" y="{fy}" width="{(x_n+2.5-anc_x1)*S}" height="{arm_t*S}" fill="#6bbf59" stroke="{INK}"/>\n'
+    bx, by = P(x_n - 2.5, aw); b += f'<rect x="{bx}" y="{by}" width="{5*S}" height="{(aw-idl_w[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
+    b += f'<polygon points="{teeth(*idl_w, idl_d, idl_n, P, idl_tooth)}" fill="#cccccc" stroke="{INK}"/>\n'
+    ix, iy = P(*idl_w); b += f'<circle cx="{ix}" cy="{iy}" r="{1.25*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     # nose
     nx, ny = P(ns_x, ns_d/2); b += f'<rect x="{nx}" y="{ny}" width="{ns_t*S}" height="{ns_d*S}" fill="#e879b0" stroke="{INK}"/>\n'
     t0 = 3.925 + 0.06*luer_l
@@ -94,14 +95,14 @@ def how():
     b += f'<path d="M{tx + r*math.cos(a0):.1f},{ty - r*math.sin(a0):.1f} A{r},{r} 0 0 1 {tx + r*math.cos(a1):.1f},{ty - r*math.sin(a1):.1f}" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>\n'
     wx, wy = P(x_front + luer_l + 24, 0)
     b += f'<line x1="{wx}" y1="{wy}" x2="{wx + 60}" y2="{wy}" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>\n'
-    sx, sy = P(x_n + 1.5, arm_y0 + arm_t + 0.3)
+    sx, sy = P(x_n + 1.5, aw + arm_t + 0.3)
     b += f'<line x1="{sx}" y1="{sy - 40}" x2="{sx}" y2="{sy - 4}" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>\n'
     # labels
     b += label(*P(16, 5.5), *P(10, 15.5), "1  Fixed spool", sub="single-layer coil in a helical groove; never turns")
     b += label(*P(lip_x1 - 0.5, -lip_d/2 - 0.3), *P(24, -15.5), "2  Peels over the lip", sub="front turn first, so nothing crosses")
     b += label(*P(eye_x, 0), *P(38, 15.5), "3  Funnel + eyelet", sub="centres the wire on the axis")
     b += label(*P(x_n - 2, drv_c[1] - 2), *P(48, -17.5), "4  Drive wheel + thumbwheel", sub="ø7, 14 teeth; ø18 thumbwheel pokes out the side")
-    b += label(*P(x_n + 2.2, idl_c[1]), *P(62, 15.5), "5  Idler on a flexure arm", sub="arm thickness sets the pinch (~1-7 N)")
+    b += label(*P(x_n + 2.2, idl_w[1]), *P(62, 15.5), "5  Idler on a flexure arm", sub="arm thickness sets the pinch (~1-5.5 N)")
     b += label(*P(ns_x + ns_t + 5, 1.3), *P(84, -9.5), "6  Luer nose + needle", sub="ISO 594 taper; any blunt Luer needle")
     return svg(1660, 640, b)
 
@@ -111,7 +112,7 @@ def pinch():
     P = lambda x, y: (OX + (x - 38)*S, OY - (y - 0)*S)
     b = ""
     b += f'<text x="40" y="44" {FONT} font-size="26" font-weight="bold" fill="{INK}">How it grips: the idler is preloaded into the wire\'s path</text>\n'
-    b += f'<text x="40" y="72" {FONT} font-size="16" fill="{MUTED}">With no wire, the idler sits 0.6 mm past the wire line. Loading the wire bends the arm back ~0.6 mm, and the bent arm is the spring.</text>\n'
+    b += f'<text x="40" y="72" {FONT} font-size="16" fill="{MUTED}">The arm is printed straight with the idler 1.5 mm past where the wire puts it. The wire bends it back 1.5 mm: the bent arm is the spring.</text>\n'
     # wire line
     b += f'<line x1="{P(38,0)[0]}" y1="{P(0,0)[1]}" x2="{P(68,0)[0]}" y2="{P(0,0)[1]}" stroke="{WIRE}" stroke-width="{wire*S:.1f}" stroke-linecap="round"/>\n'
     b += f'<text x="{P(38.3,0)[0]}" y="{P(0,-1.1)[1]}" {FONT} font-size="15" fill="{MUTED}">wire ø0.87 (0.8 nominal)</text>\n'
@@ -131,25 +132,25 @@ def pinch():
         pts = top + bot[::-1]
         return f'<polygon points="{" ".join(f"{a:.1f},{c:.1f}" for a, c in pts)}" {style}/>\n'
     b += arm_path(0, f'fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 4"')
-    b += arm_path(0.6, f'fill="#6bbf59" stroke="{INK}"')
-    ic = (idl_c[0], idl_c[1] + 0.6)
+    b += arm_path(PRE, f'fill="#6bbf59" stroke="{INK}"')
+    ic = (idl_c[0], idl_c[1] + PRE)
     b += f'<polygon points="{teeth(*idl_c, idl_d, idl_n, P, idl_tooth)}" fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 4"/>\n'
-    b += f'<rect x="{P(x_n-2.5,0)[0]}" y="{P(0,arm_y0+0.6)[1]}" width="{5*S}" height="{(arm_y0-ic[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
+    b += f'<rect x="{P(x_n-2.5,0)[0]}" y="{P(0,arm_y0+PRE)[1]}" width="{5*S}" height="{(arm_y0+PRE-ic[1])*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     b += f'<polygon points="{teeth(*ic, idl_d, idl_n, P, idl_tooth)}" fill="#cccccc" stroke="{INK}"/>\n'
     cx, cy = P(*ic); b += f'<circle cx="{cx}" cy="{cy}" r="{1.25*S}" fill="#6bbf59" stroke="{INK}"/>\n'
     # dimensions
     yL = P(0, arm_y0 + arm_t + 1.6)[1]
     b += f'<line x1="{P(anc_x1,0)[0]}" y1="{yL}" x2="{P(x_n,0)[0]}" y2="{yL}" stroke="{INK}" marker-start="url(#a)" marker-end="url(#a)"/>\n'
-    b += f'<text x="{(P(anc_x1,0)[0]+P(x_n,0)[0])/2}" y="{yL - 8}" {FONT} font-size="16" fill="{INK}" text-anchor="middle">free length 11 mm, 4 mm tall</text>\n'
+    b += f'<text x="{(P(anc_x1,0)[0]+P(x_n,0)[0])/2}" y="{yL - 8}" {FONT} font-size="16" fill="{INK}" text-anchor="middle">free length 13 mm, 4 mm tall</text>\n'
     xr = P(x_n + 4.5, 0)[0]
-    b += f'<line x1="{xr}" y1="{P(0,arm_y0)[1]}" x2="{xr}" y2="{P(0,arm_y0+0.6)[1]}" stroke="#c0392b" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>\n'
-    b += f'<text x="{xr + 10}" y="{P(0,arm_y0+0.3)[1] + 5}" {FONT} font-size="16" fill="#c0392b">0.6 mm bend = the preload</text>\n'
+    b += f'<line x1="{xr}" y1="{P(0,arm_y0)[1]}" x2="{xr}" y2="{P(0,arm_y0+PRE)[1]}" stroke="#c0392b" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>\n'
+    b += f'<text x="{xr + 10}" y="{P(0,arm_y0+PRE/2)[1] + 5}" {FONT} font-size="16" fill="#c0392b">1.5 mm bend = the preload</text>\n'
     b += f'<line x1="{cx}" y1="{cy - 2.6*S - 40}" x2="{cx}" y2="{cy - 2.6*S + 2}" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>\n'
     b += f'<text x="{cx - 10}" y="{cy - 2.6*S - 30}" {FONT} font-size="16" fill="#c0392b" text-anchor="end">pinch force</text>\n'
     b += f'<text x="{dx - 2.6*S}" y="{dy + 4.8*S}" {FONT} font-size="16" fill="{INK}">drive wheel: its teeth bite 0.25 mm into the wire</text>\n'
     # table
     tx, ty = 1000, 500
-    rows = [("arm", "notches", "pinch"), ("1.0 mm", "1", "~1 N"), ("1.3 mm", "2", "~2 N"), ("1.6 mm", "3", "~3.5 N"), ("2.0 mm", "4", "~7 N")]
+    rows = [("arm", "notches", "pinch"), ("0.9 mm", "1", "~1 N"), ("1.1 mm", "2", "~1.8 N"), ("1.3 mm", "3", "~3 N"), ("1.6 mm", "4", "~5.6 N")]
     b += f'<text x="{tx}" y="{ty - 34}" {FONT} font-size="17" font-weight="bold" fill="{INK}">Swap arms to tune the grip</text>\n'
     for i, r in enumerate(rows):
         for j, c in enumerate(r):

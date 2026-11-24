@@ -24,18 +24,18 @@
 <circle cx="910" cy="385.275" r="135.0" fill="#3b82c4" fill-opacity="0.12" stroke="#3b82c4" stroke-width="2" stroke-dasharray="8 5"/>
 <polygon points="962.5,385.3 949.5,376.3 957.3,362.5 941.7,360.0 942.7,344.2 927.6,348.8 921.7,334.1 910.0,344.8 898.3,334.1 892.4,348.8 877.3,344.2 878.3,360.0 862.7,362.5 870.5,376.3 857.5,385.3 870.5,394.3 862.7,408.1 878.3,410.5 877.3,426.3 892.4,421.8 898.3,436.5 910.0,425.8 921.7,436.5 927.6,421.8 942.7,426.3 941.7,410.5 957.3,408.1 949.5,394.3" fill="#3b82c4" stroke="#222"/>
 <circle cx="910" cy="385.275" r="22.5" fill="white" stroke="#222"/>
-<rect x="685" y="198.97500000000002" width="60" height="49.5" fill="#6bbf59" stroke="#222"/>
-<rect x="745" y="209.475" width="202.5" height="24.0" fill="#6bbf59" stroke="#222"/>
-<rect x="872.5" y="233.47500000000002" width="75" height="53.99999999999999" fill="#6bbf59" stroke="#222"/>
-<polygon points="955.0,287.5 946.2,277.8 949.0,265.0 936.5,261.0 932.5,248.5 919.7,251.3 910.0,242.5 900.3,251.3 887.5,248.5 883.5,261.0 871.0,265.0 873.8,277.8 865.0,287.5 873.8,297.2 871.0,310.0 883.5,314.0 887.5,326.4 900.3,323.7 910.0,332.5 919.7,323.7 932.5,326.4 936.5,314.0 949.0,310.0 946.2,297.2" fill="#cccccc" stroke="#222"/>
-<circle cx="910" cy="287.475" r="18.75" fill="#6bbf59" stroke="#222"/>
+<rect x="655" y="219.975" width="60" height="43.50000000000001" fill="#6bbf59" stroke="#222"/>
+<rect x="715" y="206.47500000000002" width="232.5" height="19.5" fill="#6bbf59" stroke="#222"/>
+<rect x="872.5" y="225.97500000000002" width="75" height="53.99999999999999" fill="#6bbf59" stroke="#222"/>
+<polygon points="955.0,280.0 946.2,270.3 949.0,257.5 936.5,253.5 932.5,241.0 919.7,243.8 910.0,235.0 900.3,243.8 887.5,241.0 883.5,253.5 871.0,257.5 873.8,270.3 865.0,280.0 873.8,289.7 871.0,302.5 883.5,306.5 887.5,318.9 900.3,316.2 910.0,325.0 919.7,316.2 932.5,318.9 936.5,306.5 949.0,302.5 946.2,289.7" fill="#cccccc" stroke="#222"/>
+<circle cx="910" cy="279.975" r="18.75" fill="#6bbf59" stroke="#222"/>
 <rect x="1060.0" y="232.5" width="37.5" height="195" fill="#e879b0" stroke="#222"/>
 <polygon points="1097.5,296.7375 1225.0,300.5625 1225.0,359.4375 1097.5,363.2625" fill="#e879b0" stroke="#222"/>
 <rect x="1255.0" y="315" width="300.0" height="30" fill="#d9d9d9" stroke="#222"/>
 <line x1="1255.0" y1="330" x2="1555.0" y2="330" stroke="#5b6570" stroke-width="13.1"/>
 <path d="M857.7,529.0 A153.0,153.0 0 0 1 766.2,437.6" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
 <line x1="1615.0" y1="330" x2="1675.0" y2="330" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
-<line x1="932.5" y1="164.975" x2="932.5" y2="200.975" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+<line x1="932.5" y1="161.975" x2="932.5" y2="197.975" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
 <line x1="310.0" y1="247.5" x2="220.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
 <circle cx="310.0" cy="247.5" r="3" fill="#777"/>
 <text x="220.0" y="91.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">1  Fixed spool</text>
@@ -52,10 +52,10 @@
 <circle cx="880.0" cy="415.3" r="3" fill="#777"/>
 <text x="790.0" y="610.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">4  Drive wheel + thumbwheel</text>
 <text x="790.0" y="629.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">ø7, 14 teeth; ø18 thumbwheel pokes out the side</text>
-<line x1="943.0" y1="287.5" x2="1000.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
-<circle cx="943.0" cy="287.5" r="3" fill="#777"/>
+<line x1="943.0" y1="280.0" x2="1000.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="943.0" cy="280.0" r="3" fill="#777"/>
 <text x="1000.0" y="91.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">5  Idler on a flexure arm</text>
-<text x="1000.0" y="110.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">arm thickness sets the pinch (~1-7 N)</text>
+<text x="1000.0" y="110.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">arm thickness sets the pinch (~1-5.5 N)</text>
 <line x1="1172.5" y1="310.5" x2="1330.0" y2="472.5" stroke="#777" stroke-width="1.2"/>
 <circle cx="1172.5" cy="310.5" r="3" fill="#777"/>
 <text x="1330.0" y="490.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">6  Luer nose + needle</text>

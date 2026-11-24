@@ -13,6 +13,7 @@ import sys, os
 import numpy as np
 
 GRID, TOL = 0.1, 0.02
+BENT = {"arm": "arm_bent", "idler": "idler_bent"}
 ORDER = [  # (part, direction it comes FROM: +z = lowered from above, -x = slid on from behind, +x = from the front)
     ("mid", "+z"), ("arm", "+z"), ("idler", "+z"), ("wheel", "+z"), ("spool", "+z"), ("nose", "+z"),
     ("lid", "+z"), ("ring_back", "-x"), ("ring_front", "+x")]
@@ -54,12 +55,15 @@ def hits(tri, d, grid):
 
 def main():
     D = sys.argv[1]
-    parts = {n: load(os.path.join(D, n + ".stl")) for n, _ in ORDER + [("base", "")]}
+    names = [n for n, _ in ORDER] + ["base"] + list(BENT.values())
+    parts = {n: load(os.path.join(D, n + ".stl")) for n in names}
     allp = np.concatenate([p.reshape(-1, 3) for p in parts.values()])
     grid0 = allp.min(axis=0) - 1
     fail = 0
     placed = ["base"]
     for name, d in ORDER:
+        if name == "wheel":   # the arm is pushed back (bent) to drop the wheel in, and stays bent once wired
+            placed = [BENT.get(p, p) for p in placed]
         a, u, v = axes(d)
         g = (grid0[u], grid0[v])
         mv = hits(parts[name], d, g)

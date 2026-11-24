@@ -13,6 +13,14 @@ aren't reopened. Moved here from the solder-desk repo on 2026-11-24, when the pe
 
 ## Current decisions
 
+- **Pinch spring: 1.5 mm preload, crush-rib anchor, 2.1 mm pin plate** (2026-11-24). The user found v1's spring
+  didn't push the idler at the drive. The numbers agree: its 0.6 mm preload was smaller than the play in its
+  force path (~0.8 mm of anchor swivel from 0.12 mm slot play, magnified out to the idler, plus bore
+  clearance), and the 0.8 mm plate under the idler's pin bent so the idler tipped away. Now the arm is printed
+  straight with the idler 1.5 mm past the wire (free length 13, softer arms 0.9–1.6), the anchor is locked by
+  crush ribs (as the tip cleaner ring was, 2026-11-23), and the pin plate is 2.1 mm. Check `pinch_holds` fails if
+  play can eat more than a third of the preload (v1: 0.91 of 0.6). A pivoting idler lever was considered; the
+  flexure stays because a pivot adds its own pin play and a separate spring.
 - **Rig v2: hex sandwich of three flat layers, FDM fits, checked assembly paths** (2026-11-24). The user
   printed v1 and found three faults: the cover's thumbwheel pocket printed as spaghetti (a ø19 ceiling); it
   could not be assembled (the cover had to pass through the thumbwheel, which my step renders glossed over);

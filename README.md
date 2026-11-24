@@ -11,7 +11,7 @@ needle, right where the iron is. Roll it back to retract. Fully parametric OpenS
   the spool. Only the last ~15 mm, from the wheel to the tip, is pushed.
 - **Centred needle.** The wire runs dead straight on the pen's axis through an ISO 594 Luer taper, so any
   blunt dispensing needle fits.
-- **Tunable grip.** The idler rides on a printed flexure arm. Swap arms (1.0–2.0 mm) to set the pinch from ~1 to ~7 N.
+- **Tunable grip.** The idler rides on a printed flexure arm. Swap arms (0.9–1.6 mm) to set the pinch from ~1 to ~5.6 N.
 
 ## How it works
 

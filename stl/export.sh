@@ -17,6 +17,6 @@ fi
 if want solder_pen_rig; then
   mkdir -p stl/solder_pen_rig
   for p in base mid lid spool wheel idler idler_smooth nose ring; do go stl/solder_pen_rig/$p.stl -D "part=\"$p\"" parts/solder_pen_rig.scad; done
-  for t in 1.0 1.3 1.6 2.0; do go stl/solder_pen_rig/arm$t.stl -D 'part="arm"' -D arm_t=$t parts/solder_pen_rig.scad; done
+  for t in 0.9 1.1 1.3 1.6; do go stl/solder_pen_rig/arm$t.stl -D 'part="arm"' -D arm_t=$t parts/solder_pen_rig.scad; done
   go stl/solder_pen_rig/solder_pen_rig.3mf -D 'part="plate"' parts/solder_pen_rig.scad   # everything: 3 layers, 4 arms, 2 rings
 fi

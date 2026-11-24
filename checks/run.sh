@@ -45,23 +45,28 @@ solder_pen_rig.scad|-D 'part="idler"'|1|one_piece rig idler
 solder_pen_rig.scad|-D 'part="idler_smooth"'|1|one_piece rig idler_smooth
 solder_pen_rig.scad|-D 'part="nose"'|1|one_piece rig nose
 solder_pen_rig.scad|-D 'part="ring"'|1|one_piece rig ring
-solder_pen_rig.scad|-D 'part="arm"' -D arm_t=1.0|1|one_piece rig arm1.0
-solder_pen_rig.scad|-D 'part="arm"' -D arm_t=2.0|1|one_piece rig arm2.0
+solder_pen_rig.scad|-D 'part="arm"' -D arm_t=0.9|1|one_piece rig arm0.9
+solder_pen_rig.scad|-D 'part="arm"' -D arm_t=1.6|1|one_piece rig arm1.6
 solder_pen_drive_test.scad|-D 'part="plate"'|5|plate_parts_apart drive_test (5 parts)
 solder_pen_rig.scad|-D 'part="plate"'|14|plate_parts_apart rig (14 parts)
 LIST
 
 # no_ceilings: every rig part, as printed, has no unsupported ceiling (checks/printable.py; v1's cover failed)
-for p in base mid lid spool wheel idler idler_smooth nose ring arm:1.0 arm:2.0; do
+for p in base mid lid spool wheel idler idler_smooth nose ring arm:0.9 arm:1.6; do
   n=${p%%:*}; t=${p#*:}; [ "$t" = "$p" ] && t=""
   openscad -q -o "$tmp/c.stl" -D "part=\"$n\"" ${t:+-D arm_t=$t} parts/solder_pen_rig.scad 2>/dev/null
-  python3 checks/printable.py "$tmp/c.stl" "rig $n$t" || fail=1
+  # arms: the flexure's underside is a straight ~10.5 mm bridge from the anchor to the tip post (prints clean)
+  python3 checks/printable.py "$tmp/c.stl" "rig $n$t" ${t:+25} || fail=1
 done
+
+# pinch_holds: the idler spring's preload survives the play in its force path (checks/pinch.py; v1 failed)
+openscad -o "$tmp/pinch.stl" -D 'part="pinch"' parts/solder_pen_rig.scad > "$tmp/pinch.txt" 2>&1
+python3 checks/pinch.py "$tmp/pinch.txt" || fail=1
 
 # assembly_paths_clear: each rig part reaches its place along its path (drop in from above, rings slide on
 # from the ends) without passing through a part already there (checks/assembly_paths.py; v1's cover failed)
 mkdir -p "$tmp/at"
-for w in base mid lid arm idler wheel spool nose ring_back ring_front; do
+for w in base mid lid arm idler arm_bent idler_bent wheel spool nose ring_back ring_front; do
   openscad -q -o "$tmp/at/$w.stl" -D 'part="at"' -D "which=\"$w\"" parts/solder_pen_rig.scad 2>/dev/null
 done
 python3 checks/assembly_paths.py "$tmp/at" || fail=1
