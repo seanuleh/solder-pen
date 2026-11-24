@@ -217,6 +217,20 @@ module assembly(s = false, cut = true) {
   }
   color("#f0b429") core(); color("#3b82c4") nut(); if (!s) wire_view();
 }
+// exploded: one row per part, each lying along +X and cut on the channel plane (front to the right)
+module row(y) translate([0, 0, y]) rotate([0, 90, 0]) rotate(-phi_ch - 180) children();
+module cut_half() difference() { children(); rotate(phi_ch) translate([-20, 0, -20]) cube([40, 20, 120]); }
+module exploded() {
+  row(0)   cut_half() color("#c9d1d9") barrel();
+  row(-20) { color("#f0b429") core(); wire_view(); }
+  row(-40) color("#3b82c4") nut();
+  row(-60) cut_half() color("#e879b0") nose_straight();
+  row(-80) cut_half() color("#e879b0") nose_s();
+}
+if (part == "exploded") exploded();
+// wound: core + nut + wire, nut at the back (use = 0), anchor hole turned toward the viewer (-y). Axis along +X.
+hole_abs = 360 * (anc_z - g0) / pitch + rot;
+if (part == "wound") rotate([0, 90, 0]) rotate(270 - hole_abs) { color("#f0b429") core(); color("#3b82c4") nut(); wire_view(0); }
 if (part == "barrel") p_barrel();
 if (part == "core") p_core();
 if (part == "nut") p_nut();

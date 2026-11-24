@@ -17,6 +17,14 @@ go solder_pen_drive_test --imgsize=1600,1100 --camera=25,18,5,50,0,-30,125 -D 'p
 go solder_pen_drive_nip --imgsize=1600,900 --projection=o --camera=30,20,0,0,0,0,110 -D 'part="nip"' parts/solder_pen_drive_test.scad
 go a_test_cutaway --imgsize=3000,1000 --camera=22,-95,14,22,0,0 -D 'part="cutaway"' parts/solder_pen_a_test.scad && python3 renders/trim.py renders/a_test_cutaway.png >/dev/null
 go a_test_plate --imgsize=1600,1000 --viewall --autocenter --projection=o --camera=0,0,0,0,0,0,200 -D 'part="plate"' parts/solder_pen_a_test.scad
+go a_test_exploded --imgsize=2600,2600 --camera=40,-300,-40,40,0,-40 -D 'part="exploded"' parts/solder_pen_a_test.scad && python3 renders/trim.py renders/a_test_exploded.png >/dev/null
+go a_test_wound --imgsize=3000,1300 --camera=22,-140,0,22,0,0 -D 'part="wound"' -D used=0 parts/solder_pen_a_test.scad && python3 renders/trim.py renders/a_test_wound.png >/dev/null
+go c_pen --imgsize=3200,1400 --viewall --autocenter --camera=0,0,0,50,0,335,0 -D 'part="assembly"' parts/solder_pen_c.scad && python3 renders/trim.py renders/c_pen.png >/dev/null
+go c_top --imgsize=3000,900 --projection=o --camera=66,0,0,0,0,0,165 -D 'part="top"' parts/solder_pen_c.scad && python3 renders/trim.py renders/c_top.png >/dev/null
+go c_open --imgsize=2400,1400 --camera=72,-40,45,98,0,3 -D 'part="open"' parts/solder_pen_c.scad && python3 renders/trim.py renders/c_open.png >/dev/null
+go c_drive --imgsize=2000,1400 --camera=92,-26,30,104,0,4 -D 'part="assembly"' parts/solder_pen_c.scad && python3 renders/trim.py renders/c_drive.png >/dev/null
+go c_exploded --imgsize=3200,1800 --viewall --autocenter --camera=0,0,0,50,0,335,0 -D 'part="exploded"' parts/solder_pen_c.scad && python3 renders/trim.py renders/c_exploded.png >/dev/null
+go c_plate --imgsize=2000,1100 --viewall --autocenter --projection=o --camera=0,0,0,0,0,0,200 -D 'part="plate"' parts/solder_pen_c.scad
 go solder_pen_rig --imgsize=1800,900 --camera=40,0,0,60,0,330,140 -D 'part="assembly"' parts/solder_pen_rig.scad
 go solder_pen_rig_open --imgsize=1800,900 --camera=36,0,0,55,0,25,135 -D 'part="open"' parts/solder_pen_rig.scad
 go solder_pen_rig_nip --imgsize=1600,900 --projection=o --camera=50,0,0,0,0,0,60 -D 'part="nip"' parts/solder_pen_rig.scad

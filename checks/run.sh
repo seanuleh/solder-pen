@@ -53,6 +53,14 @@ solder_pen_a_test.scad|-D 'part="nut"'|1|one_piece a_test nut
 solder_pen_a_test.scad|-D 'part="nose_straight"'|1|one_piece a_test nose_straight
 solder_pen_a_test.scad|-D 'part="nose_s"'|1|one_piece a_test nose_s
 solder_pen_a_test.scad|-D 'part="plate"'|5|plate_parts_apart a_test (5 parts)
+solder_pen_c.scad|-D 'part="body"'|1|one_piece c body
+solder_pen_c.scad|-D 'part="bobbin"'|1|one_piece c bobbin
+solder_pen_c.scad|-D 'part="gear_fixed"'|1|one_piece c gear_fixed
+solder_pen_c.scad|-D 'part="gear_arm"'|1|one_piece c gear_arm
+solder_pen_c.scad|-D 'part="ring"'|1|one_piece c ring
+solder_pen_c.scad|-D 'part="clip"'|1|one_piece c clip
+solder_pen_c.scad|-D 'part="nose"'|1|one_piece c nose
+solder_pen_c.scad|-D 'part="plate"'|8|plate_parts_apart c (8 parts)
 solder_pen_drive_test.scad|-D 'part="plate"'|5|plate_parts_apart drive_test (5 parts)
 solder_pen_rig.scad|-D 'part="plate"'|14|plate_parts_apart rig (14 parts)
 LIST
@@ -89,6 +97,26 @@ for u in 0 0.5 1; do for k in nut_core nut_barrel core_barrel core_nose nut_nose
   openscad -o "$tmp/f.stl" -D "part=\"fit_$k\"" -D used=$u parts/solder_pen_a_test.scad 2>&1 | grep -q "top level object is empty" || bad="$bad $k@$u"
 done; done
 if [ -z "$bad" ]; then echo "PASS  fits_clear a_test (7 fits x nut at back/middle/front)"; else echo "FAIL  fits_clear a_test:$bad"; fail=1; fi
+
+# Concept C "stick": no ceilings; every fit clear with the ring back (arm at rest) and forward (pinched);
+# the spur gears clear through one tooth of turning; the fixed gear's rim keeps the arm gear in (must HIT);
+# the ring's pinch at its detents (checks/pinch_c.py).
+for p in body bobbin gear_fixed gear_arm ring clip nose; do
+  openscad -q -o "$tmp/c.stl" -D "part=\"$p\"" parts/solder_pen_c.scad 2>/dev/null
+  python3 checks/printable.py "$tmp/c.stl" "c $p" || fail=1
+done
+bad=""
+for on in true false; do for k in gears_body fixed_gear_arm bobbin_body nose_body clips ring_slide wire_path; do
+  openscad -o "$tmp/f.stl" -D "part=\"fit_$k\"" -D pinched=$on -D ribs=false parts/solder_pen_c.scad 2>&1 | grep -q "top level object is empty" || bad="$bad $k@pinched=$on"
+done
+  openscad -o "$tmp/f.stl" -D 'part="fit_arm_gear_kept"' -D pinched=$on parts/solder_pen_c.scad 2>&1 | grep -q "top level object is empty" && bad="$bad arm_gear_loose@pinched=$on"
+done
+for ph in 0 3 6 9 12 15 18 21 24 27; do
+  openscad -o "$tmp/f.stl" -D 'part="fit_mesh"' -D phase=$ph parts/solder_pen_c.scad 2>&1 | grep -q "top level object is empty" || bad="$bad mesh@$ph"
+done
+if [ -z "$bad" ]; then echo "PASS  fits_clear c (7 fits x rest/pinched, gear mesh x 10 phases, arm gear kept)"; else echo "FAIL  fits_clear c:$bad"; fail=1; fi
+openscad -o "$tmp/i.stl" -D 'part="info"' parts/solder_pen_c.scad > "$tmp/i.txt" 2>&1
+python3 checks/pinch_c.py "$tmp/i.txt" || fail=1
 
 rm -r "$tmp"
 exit $fail

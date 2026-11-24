@@ -13,6 +13,20 @@ aren't reopened. Moved here from the solder-desk repo on 2026-11-24, when the pe
 
 ## Current decisions
 
+- **Concept C "stick", from a working MakerWorld dispenser** (2026-11-24). The A test print had no workable way
+  to load solder: the nut couldn't go on the core, and loading meant hand-winding ~20 turns into a 1 mm groove,
+  then threading the wire blind through printed tunnels. Its ø7.8 lead screw and ø1.3 holes also printed badly.
+  The user nearly dropped the project, then sent a dispenser that works for them. Taken from it: an **open
+  groove** you lay the wire in, the **body as the spring** (a long slit-off arm, soft enough to forgive FDM), a
+  **sliding clip** on a flared edge to set the pinch (back = open for loading), **both rollers driven** (meshed
+  gears), a **turning spool**, and nothing finer than ~0.6 mm. Slimmed from their 12 × 20 + ø33 spool on a hook
+  to a **16 × 11 flat stick** (the user accepted flat over round: a gear pair across the wire can't fit ø15) by
+  putting a ø12.6 bobbin *inside* the outline (~0.49 m, enough for the ~0.5 m goal). This revises the slim-pen
+  note above: a transverse bobbin fits if the pen is flat. Rule since: before printing, write out how the user
+  loads, uses and refills it ([assembly.md](assembly.md)).
+- **Nose: a real male Luer-lock, not a slip taper** (2026-11-24). The user's needle has a standard Luer-lock
+  hub, and earlier noses only copied the 6 % taper (push-on, no lock). The nose now carries the ISO 80369-7
+  collar thread (double start, lead 5, minor/major 7.0/8.0 + 0.3 for print), so the needle screws on and locks.
 - **Back to concept A (lead-screw core), slim: ≤ ø15, ~0.5 m, little waste** (2026-11-24). After v2 printed
   (fixed spool couldn't pay out, weak arm), I built a "v3" free-bobbin rig without checking with the user. The
   user pointed out it had drifted from the goal, a *slim pen*: a 20 mm hex with loose clip rings, and their ideas
