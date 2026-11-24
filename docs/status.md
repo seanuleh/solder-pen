@@ -2,8 +2,9 @@
 
 ## Now (2026-11-24)
 
-- **Rig v2 is ready to print** (`stl/solder_pen_rig/solder_pen_rig.3mf`, all 14 parts): hex sandwich, FDM fits,
-  1.5 mm-preload spring with a crush-rib anchor, every check passing. To print in **grey Bambu PETG HF, AMS slot 1**.
+- **Rig v2 is printing** (sent 2026-11-24; `stl/solder_pen_rig/solder_pen_rig.3mf`, all 14 parts, grey Bambu PETG HF
+  from AMS slot 1, 0.16 mm Optimal, ~77 min, 20 g): hex sandwich, FDM fits, 1.5 mm-preload spring with a
+  crush-rib anchor, every check passing.
 - **v1** (round, two halves, white SUNLU PETG) is retired: it printed with spaghetti in the cover, could not be
   assembled, and its pins/slots didn't fit or bound. The held reprint of its fused parts (Bambuddy gcode id 22)
   is obsolete.
