@@ -47,6 +47,12 @@ solder_pen_rig.scad|-D 'part="nose"'|1|one_piece rig nose
 solder_pen_rig.scad|-D 'part="ring"'|1|one_piece rig ring
 solder_pen_rig.scad|-D 'part="arm"' -D arm_t=0.9|1|one_piece rig arm0.9
 solder_pen_rig.scad|-D 'part="arm"' -D arm_t=1.6|1|one_piece rig arm1.6
+solder_pen_a_test.scad|-D 'part="barrel"'|1|one_piece a_test barrel
+solder_pen_a_test.scad|-D 'part="core"'|1|one_piece a_test core
+solder_pen_a_test.scad|-D 'part="nut"'|1|one_piece a_test nut
+solder_pen_a_test.scad|-D 'part="nose_straight"'|1|one_piece a_test nose_straight
+solder_pen_a_test.scad|-D 'part="nose_s"'|1|one_piece a_test nose_s
+solder_pen_a_test.scad|-D 'part="plate"'|5|plate_parts_apart a_test (5 parts)
 solder_pen_drive_test.scad|-D 'part="plate"'|5|plate_parts_apart drive_test (5 parts)
 solder_pen_rig.scad|-D 'part="plate"'|14|plate_parts_apart rig (14 parts)
 LIST
@@ -70,6 +76,19 @@ for w in base mid lid arm idler arm_bent idler_bent wheel spool nose ring_back r
   openscad -q -o "$tmp/at/$w.stl" -D 'part="at"' -D "which=\"$w\"" parts/solder_pen_rig.scad 2>/dev/null
 done
 python3 checks/assembly_paths.py "$tmp/at" || fail=1
+
+# Concept A test print: no ceilings, and every fit is clear (OpenSCAD reports an empty intersection) with
+# the nut at the back, the middle and the front of its travel: nut on core (the tooth rides the groove), nut
+# and core in the barrel, both against the noses, and the wire's path from the peel point out of each nose.
+for p in barrel core nut nose_straight nose_s; do
+  openscad -q -o "$tmp/c.stl" -D "part=\"$p\"" parts/solder_pen_a_test.scad 2>/dev/null
+  python3 checks/printable.py "$tmp/c.stl" "a_test $p" || fail=1
+done
+bad=""
+for u in 0 0.5 1; do for k in nut_core nut_barrel core_barrel core_nose nut_nose wire_path wire_s; do
+  openscad -o "$tmp/f.stl" -D "part=\"fit_$k\"" -D used=$u parts/solder_pen_a_test.scad 2>&1 | grep -q "top level object is empty" || bad="$bad $k@$u"
+done; done
+if [ -z "$bad" ]; then echo "PASS  fits_clear a_test (7 fits x nut at back/middle/front)"; else echo "FAIL  fits_clear a_test:$bad"; fail=1; fi
 
 rm -r "$tmp"
 exit $fail

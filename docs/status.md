@@ -2,15 +2,14 @@
 
 ## Now (2026-11-24)
 
-- **Rig v2 is printing** (sent 2026-11-24; `stl/solder_pen_rig/solder_pen_rig.3mf`, all 14 parts, grey Bambu PETG HF
-  from AMS slot 1, 0.16 mm Optimal, ~77 min, 20 g): hex sandwich, FDM fits, 1.5 mm-preload spring with a
-  crush-rib anchor, every check passing.
-- **v1** (round, two halves, white SUNLU PETG) is retired: it printed with spaghetti in the cover, could not be
-  assembled, and its pins/slots didn't fit or bound. The held reprint of its fused parts (Bambuddy gcode id 22)
-  is obsolete.
-- **Next:** print v2, assemble it per [assembly.md](assembly.md), and report any fit that's off (each is one
-  parameter). Then test: does the idler push hard enough (try arms 1.3 then 1.6), grip with ø7/ø6 rollers, coil drag, thumbwheel feel, whether the pinch holds after a
-  few days loaded.
+- **Direction: concept A (lead-screw core), slim pen ≤ ø15, ~0.5 m.** See decisions.md.
+- **A test print is printing** (2026-11-24; `stl/solder_pen_a_test/solder_pen_a_test.3mf`, 5 parts, grey Bambu PETG HF slot 1,
+  0.16 mm Optimal, ~61 min, 9 g; overhangs are all 45°, the thread undersides are the ones to watch).
+  **Next:** print it, wind ~0.4 m (tail in the front hole, wind back to the nut), and check that turning the knob
+  pushes the wire steadily through the straight nose and then the S nose with the needle on, that reversing
+  pulls it back, and that the nut peels cleanly without the coil loosening.
+- **Rig v2** (hex sandwich, concept B) printed 2026-11-24 and retired: its fixed spool couldn't pay out and its arm
+  barely gripped; its arm anchor's crush ribs were too tight (sanded). An unbuilt "v3" bobbin rig is in `git stash`.
 - Drive test rig v2 (the flat sled) is designed but not printed, and still has v1-style tight fits.
 
 ## History

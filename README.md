@@ -28,7 +28,7 @@ from above in order. **[Assembly guide](docs/assembly.md)**: eight steps and eve
 
 ## Status
 
-Early prototype (2026-11). Pen-scale rig v2 is ready to print. See [docs/status.md](docs/status.md).
+Early prototype (2026-11). Rig v2 (concept B, below) printed but its fixed spool could not feed; the project is moving to a slim ø15 lead-screw pen (concept A), starting with a test print: [cutaway](renders/a_test_cutaway.png). See [docs/status.md](docs/status.md).
 
 | | |
 |---|---|

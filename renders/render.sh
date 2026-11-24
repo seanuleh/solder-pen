@@ -15,6 +15,8 @@ go solder_pen_reel --imgsize=2000,900 --camera=48,0,4,60,0,-12,165 parts/solder_
 go solder_pen_reel_outside --imgsize=2000,900 --camera=48,0,4,55,0,20,165 -D 'part="outside"' parts/solder_pen_reel.scad
 go solder_pen_drive_test --imgsize=1600,1100 --camera=25,18,5,50,0,-30,125 -D 'part="assembly"' parts/solder_pen_drive_test.scad
 go solder_pen_drive_nip --imgsize=1600,900 --projection=o --camera=30,20,0,0,0,0,110 -D 'part="nip"' parts/solder_pen_drive_test.scad
+go a_test_cutaway --imgsize=3000,1000 --camera=22,-95,14,22,0,0 -D 'part="cutaway"' parts/solder_pen_a_test.scad && python3 renders/trim.py renders/a_test_cutaway.png >/dev/null
+go a_test_plate --imgsize=1600,1000 --viewall --autocenter --projection=o --camera=0,0,0,0,0,0,200 -D 'part="plate"' parts/solder_pen_a_test.scad
 go solder_pen_rig --imgsize=1800,900 --camera=40,0,0,60,0,330,140 -D 'part="assembly"' parts/solder_pen_rig.scad
 go solder_pen_rig_open --imgsize=1800,900 --camera=36,0,0,55,0,25,135 -D 'part="open"' parts/solder_pen_rig.scad
 go solder_pen_rig_nip --imgsize=1600,900 --projection=o --camera=50,0,0,0,0,0,60 -D 'part="nip"' parts/solder_pen_rig.scad

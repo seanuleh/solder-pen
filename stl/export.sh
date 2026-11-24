@@ -1,5 +1,5 @@
 #!/bin/sh
-# Re-export the printed-part STLs. Usage: ./stl/export.sh [solder_pen_drive_test|solder_pen_rig ...]   (no args: all)
+# Re-export the printed-part STLs. Usage: ./stl/export.sh [solder_pen_a_test|solder_pen_drive_test|solder_pen_rig ...]   (no args: all)
 # 3MFs carry no colours/materials (color-mode=none): Bambu Studio would import OpenSCAD's colours as new
 # filaments and overwrite the ones loaded in the AMS. Opened with no materials, it keeps the user's filaments.
 cd "$(dirname "$0")/.."
@@ -13,6 +13,11 @@ if want solder_pen_drive_test; then
   go stl/solder_pen_drive_test/idler_smooth.stl -D 'part="idler"' -D toothed=false parts/solder_pen_drive_test.scad
   for p in wheel idler nose; do go stl/solder_pen_drive_test/$p.stl -D "part=\"$p\"" parts/solder_pen_drive_test.scad; done
   go stl/solder_pen_drive_test/solder_pen_drive_test.3mf -D 'part="plate"' parts/solder_pen_drive_test.scad   # sled + wheel + 2 idlers + nose
+fi
+if want solder_pen_a_test; then
+  mkdir -p stl/solder_pen_a_test
+  for p in barrel core nut nose_straight nose_s; do go stl/solder_pen_a_test/$p.stl -D "part=\"$p\"" parts/solder_pen_a_test.scad; done
+  go stl/solder_pen_a_test/solder_pen_a_test.3mf -D 'part="plate"' parts/solder_pen_a_test.scad   # all 5 parts
 fi
 if want solder_pen_rig; then
   mkdir -p stl/solder_pen_rig

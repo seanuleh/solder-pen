@@ -13,6 +13,17 @@ aren't reopened. Moved here from the solder-desk repo on 2026-11-24, when the pe
 
 ## Current decisions
 
+- **Back to concept A (lead-screw core), slim: ≤ ø15, ~0.5 m, little waste** (2026-11-24). After v2 printed
+  (fixed spool couldn't pay out, weak arm), I built a "v3" free-bobbin rig without checking with the user. The
+  user pointed out it had drifted from the goal, a *slim pen*: a 20 mm hex with loose clip rings, and their ideas
+  had been brushed aside. v3 was dropped (kept in `git stash`). The user's constraints are ≤ 15 mm across,
+  ~0.5 m of solder, minimal leftover wire, and screws only if they help. A transverse bobbin can't be wider than
+  the pen, so slim means a coil along the axis. The user's lead-screw core (concept A) is the slimmest and
+  simplest, and gives positive rewind. Its one risk (pushing the wire by the core's grip) is tested first with
+  a small print. The off-centre needle is back in play, with an S-bend nose to compare. **Rule since:** show
+  a short plan before building anything.
+- **Crush ribs: ~0.05 mm nominal interference, not 0.3** (2026-11-24). v2's arm anchor (0.15 slot gap, ribs 0.45
+  proud) had to be sanded to fit. Printed holes come out small, so the ribs need almost no designed interference.
 - **Pinch spring: 1.5 mm preload, crush-rib anchor, 2.1 mm pin plate** (2026-11-24). The user found v1's spring
   didn't push the idler at the drive. The numbers agree: its 0.6 mm preload was smaller than the play in its
   force path (~0.8 mm of anchor swivel from 0.12 mm slot play, magnified out to the idler, plus bore
