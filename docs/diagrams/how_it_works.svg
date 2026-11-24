@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1660" height="640" viewBox="0 0 1660 640">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker></defs>
+<rect width="1660" height="640" fill="white"/>
+<text x="40" y="44" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#222">How it works: the wire path (top view, cover off)</text>
+<text x="40" y="72" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#777">Roll the thumbwheel: the drive wheel pulls wire off the fixed spool and pushes it out of the needle. Roll back to retract.</text>
+<rect x="70" y="180" width="1044.75" height="300" rx="14" fill="#fbe9e7" stroke="#d0393b" stroke-width="2"/>
+<path d="M117.25,217.5 L580,217.5 L655,307.5 L1060.0,307.5 L1060.0,352.5 L655,352.5 L580,442.5 L117.25,442.5 Z" fill="white" stroke="#d0393b" stroke-width="1.5" stroke-dasharray="6 4"/>
+<rect x="82.75" y="225" width="34.5" height="210" fill="#f0b429" stroke="#222"/>
+<rect x="117.25" y="255.0" width="410.24999999999994" height="150" fill="#f0b429" stroke="#222"/>
+<path d="M527.5,255.0 L539.5,243.0 L568.75,243.0 L568.75,417.0 L539.5,417.0 L527.5,405.0 Z" fill="#f0b429" stroke="#222"/>
+<line x1="136.8" y1="250.5" x2="140.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="154.8" y1="250.5" x2="158.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="172.8" y1="250.5" x2="176.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="190.8" y1="250.5" x2="194.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="208.8" y1="250.5" x2="212.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="226.8" y1="250.5" x2="230.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="244.7" y1="250.5" x2="248.7" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="262.8" y1="250.5" x2="266.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="280.8" y1="250.5" x2="284.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="298.8" y1="250.5" x2="302.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="316.8" y1="250.5" x2="320.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<line x1="334.8" y1="250.5" x2="338.8" y2="409.5" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round"/>
+<polyline points="339.2,414.0 568.8,423.0 655.0,330.0 1572.2,330.0" fill="none" stroke="#5b6570" stroke-width="13.1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="910" cy="385.275" r="135.0" fill="#3b82c4" fill-opacity="0.12" stroke="#3b82c4" stroke-width="2" stroke-dasharray="8 5"/>
+<polygon points="962.5,385.3 949.5,376.3 957.3,362.5 941.7,360.0 942.7,344.2 927.6,348.8 921.7,334.1 910.0,344.8 898.3,334.1 892.4,348.8 877.3,344.2 878.3,360.0 862.7,362.5 870.5,376.3 857.5,385.3 870.5,394.3 862.7,408.1 878.3,410.5 877.3,426.3 892.4,421.8 898.3,436.5 910.0,425.8 921.7,436.5 927.6,421.8 942.7,426.3 941.7,410.5 957.3,408.1 949.5,394.3" fill="#3b82c4" stroke="#222"/>
+<circle cx="910" cy="385.275" r="22.5" fill="white" stroke="#222"/>
+<rect x="685" y="210.0" width="60" height="45.0" fill="#6bbf59" stroke="#222"/>
+<rect x="745" y="223.5" width="202.5" height="22.5" fill="#6bbf59" stroke="#222"/>
+<rect x="872.5" y="246.0" width="75" height="48.974999999999994" fill="#6bbf59" stroke="#222"/>
+<polygon points="947.5,295.0 934.3,287.1 940.3,272.9 925.0,274.3 921.6,259.3 910.0,269.5 898.4,259.3 895.0,274.3 879.7,272.9 885.7,287.1 872.5,295.0 885.7,302.9 879.7,317.0 895.0,315.6 898.4,330.6 910.0,320.5 921.6,330.6 925.0,315.6 940.3,317.0 934.3,302.9" fill="#cccccc" stroke="#222"/>
+<circle cx="910" cy="294.975" r="18.75" fill="#6bbf59" stroke="#222"/>
+<rect x="1060.0" y="232.5" width="37.5" height="195" fill="#e879b0" stroke="#222"/>
+<polygon points="1097.5,296.7375 1225.0,300.5625 1225.0,359.4375 1097.5,363.2625" fill="#e879b0" stroke="#222"/>
+<rect x="1242.25" y="315" width="300.0" height="30" fill="#d9d9d9" stroke="#222"/>
+<line x1="1242.25" y1="330" x2="1542.25" y2="330" stroke="#5b6570" stroke-width="13.1"/>
+<path d="M857.7,529.0 A153.0,153.0 0 0 1 766.2,437.6" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+<line x1="1602.25" y1="330" x2="1662.25" y2="330" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+<line x1="932.5" y1="179.0" x2="932.5" y2="215.0" stroke="#c0392b" stroke-width="3" marker-end="url(#r)"/>
+<line x1="310.0" y1="247.5" x2="220.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="310.0" cy="247.5" r="3" fill="#777"/>
+<text x="220.0" y="91.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">1  Fixed spool</text>
+<text x="220.0" y="110.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">single-layer coil in a helical groove; never turns</text>
+<line x1="561.2" y1="421.5" x2="430.0" y2="562.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="561.2" cy="421.5" r="3" fill="#777"/>
+<text x="430.0" y="580.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">2  Peels over the lip</text>
+<text x="430.0" y="599.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">front turn first, so nothing crosses</text>
+<line x1="655.0" y1="330.0" x2="640.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="655.0" cy="330.0" r="3" fill="#777"/>
+<text x="640.0" y="91.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">3  Funnel + eyelet</text>
+<text x="640.0" y="110.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">centres the wire on the axis</text>
+<line x1="880.0" y1="415.3" x2="790.0" y2="592.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="880.0" cy="415.3" r="3" fill="#777"/>
+<text x="790.0" y="610.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">4  Drive wheel + thumbwheel</text>
+<text x="790.0" y="629.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">ø7, 14 teeth; ø18 thumbwheel pokes out the side</text>
+<line x1="943.0" y1="295.0" x2="1000.0" y2="97.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="943.0" cy="295.0" r="3" fill="#777"/>
+<text x="1000.0" y="91.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">5  Idler on a flexure arm</text>
+<text x="1000.0" y="110.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">arm thickness sets the pinch (1-8 N)</text>
+<line x1="1172.5" y1="310.5" x2="1330.0" y2="472.5" stroke="#777" stroke-width="1.2"/>
+<circle cx="1172.5" cy="310.5" r="3" fill="#777"/>
+<text x="1330.0" y="490.5" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#222" text-anchor="start">6  Luer nose + needle</text>
+<text x="1330.0" y="509.5" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#777" text-anchor="start">ISO 594 taper; any blunt Luer needle</text>
+</svg>
